@@ -1,32 +1,46 @@
 using System;
+using System.Collections;
 using Mirror;
 using UnityEngine;
 
-public class MusicManager : MonoBehaviour
+public class MusicManager : NetworkBehaviour
 {
-    public event Action StartMusic;
+   public GameManager gameManager;
 
-    public GameManager gameManager;
+   public int timer = 120;
 
-
-    private void Start()
-    {
-        gameManager = FindObjectOfType<GameManager>();
-    }
-
-    private void OnEnable()
-    {
-        gameManager.StartEvent += PlayMusic;
-    }
-
-    private void OnDisable()
-    {
-        gameManager.StartEvent -= PlayMusic;
-    }
-
-    
-    public void PlayMusic()
+   public override void OnStartServer()
+   {
+       base.OnStartServer();
+       if (isServer)
+       {
+           gameManager.PlayMusic += RPCStartMusic;
+           gameManager.TimerStart += RPCTimerGo;
+       }
+   }
+   public override void OnStopServer()
+   {
+       base.OnStopServer();
+       gameManager.PlayMusic -= RPCStartMusic;
+       gameManager.TimerStart -= RPCTimerGo;
+   }
+    [ClientRpc]
+    public void RPCStartMusic()
     {
         Debug.Log("The music started to play");
+    }
+    [ClientRpc]
+    public void RPCTimerGo()
+    {
+        StartCoroutine(Timer());
+    }
+    IEnumerator Timer()
+    {
+        for (;;)
+        {
+            timer--;
+            Debug.Log("The timer is at " + timer);
+            yield return new WaitForSeconds(1f);
+        }
     }
 }

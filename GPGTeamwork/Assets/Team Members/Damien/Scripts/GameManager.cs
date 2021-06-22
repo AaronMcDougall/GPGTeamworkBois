@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public event Action StartEvent;
-
+    public event Action PlayMusic;
+    public event Action TimerStart;
+    
     public void PressedStart()
     {
-        StartEvent?.Invoke();
-        
+        PlayMusic?.Invoke();
+        TimerStart?.Invoke();
     }
+
+    
 }
