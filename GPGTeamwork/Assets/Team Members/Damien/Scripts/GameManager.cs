@@ -1,17 +1,37 @@
 using System;
+using System.Collections.Generic;
 using Mirror;
 using UnityEngine;
+using Random = UnityEngine.Random;
+
 
 public class GameManager : MonoBehaviour
 {
-    public event Action PlayMusic;
-    public event Action TimerStart;
-    
-    public void PressedStart()
+    public event Action StartEvent;
+    public GameObject[] platforms;
+
+
+    private void Start()
     {
-        PlayMusic?.Invoke();
-        TimerStart?.Invoke();
+        
     }
 
-    
+    private void Awake()
+    {
+        foreach (GameObject platform in platforms)
+        {
+            enabled = false;
+        }
+    }
+
+    public void PressedStart()
+    {
+        StartEvent?.Invoke();
+        EnablePlatform();
+    }
+
+    void EnablePlatform()
+    {
+        int rand = Random.Range(0, platforms.Length + 1);
+    }
 }
