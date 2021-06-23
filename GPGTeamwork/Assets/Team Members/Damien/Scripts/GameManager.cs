@@ -6,11 +6,13 @@ public class GameManager : MonoBehaviour
 {
     public event Action PlayMusic;
     public event Action TimerStart;
+    public event Action TimerStop;
     
     public void PressedStart()
     {
         PlayMusic?.Invoke();
         TimerStart?.Invoke();
+        TimerStop?.Invoke();
     }
 
     

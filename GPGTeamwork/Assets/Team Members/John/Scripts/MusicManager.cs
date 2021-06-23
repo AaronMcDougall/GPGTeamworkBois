@@ -16,6 +16,7 @@ public class MusicManager : NetworkBehaviour
        {
            gameManager.PlayMusic += RPCStartMusic;
            gameManager.TimerStart += RPCTimerGo;
+           gameManager.TimerStop += RPCTimerStop;
        }
    }
    public override void OnStopServer()
@@ -23,6 +24,7 @@ public class MusicManager : NetworkBehaviour
        base.OnStopServer();
        gameManager.PlayMusic -= RPCStartMusic;
        gameManager.TimerStart -= RPCTimerGo;
+       gameManager.TimerStop -= RPCTimerStop;
    }
     [ClientRpc]
     public void RPCStartMusic()
