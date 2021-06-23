@@ -34,16 +34,16 @@ public class MusicManager : NetworkBehaviour
     [ClientRpc]
     public void RPCTimerGo()
     {
-        StartCoroutine(Timer());
+        StartCoroutine(Countdown());
     }
 
     [ClientRpc]
     public void RPCTimerStop()
     {
-        StopCoroutine(Timer());
+        StopCoroutine(Countdown());
     }
 
-    IEnumerator Timer()
+    IEnumerator Countdown()
     {
         for (;;)
         {

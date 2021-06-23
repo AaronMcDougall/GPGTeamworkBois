@@ -12,6 +12,11 @@ public class GameManager : MonoBehaviour
     {
         PlayMusic?.Invoke();
         TimerStart?.Invoke();
+        
+    }
+
+    public void PressedStop()
+    {
         TimerStop?.Invoke();
     }
 
