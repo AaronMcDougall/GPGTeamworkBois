@@ -15,6 +15,7 @@ public class EditorButton : Editor
             (target as MusicManager)?.RPCStartMusic();
         }
         
+        /**
         if (GUILayout.Button("Start Timer"))
         {
             (target as MusicManager)?.RPCTimerGo();
@@ -24,6 +25,7 @@ public class EditorButton : Editor
         {
             (target as MusicManager)?.RPCTimerStop();
         }
+        **/
     }
 }
 

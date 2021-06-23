@@ -10,6 +10,6 @@ public class Platform : MonoBehaviour
         thisPlatform = gameObject;
     }
 
-    // Update is called once per frame
+    
     
 }
