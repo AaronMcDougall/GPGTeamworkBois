@@ -1,11 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Mirror;
 using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class RockWall : MonoBehaviour
+public class RockWall : NetworkBehaviour
 {
     public GameObject rockPrefab;
     public Transform shootingPoint;
@@ -33,8 +34,8 @@ public class RockWall : MonoBehaviour
         for (;;)
         {
             shootingPoint.position = new Vector3((transform.position.x + positionVariance.x),(transform.position.y + positionVariance.y), (transform.position.z + -positionVariance.z));
-            Instantiate(rockPrefab, shootingPoint.position, Quaternion.identity);
-            
+            GameObject newSpawn = Instantiate(rockPrefab, shootingPoint.position, Quaternion.identity);
+            NetworkServer.Spawn(newSpawn);
             yield return new WaitForSeconds(shootDelay); 
         }
         

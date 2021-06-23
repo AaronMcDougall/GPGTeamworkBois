@@ -1,10 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Mirror;
 using Mirror.Examples.RigidbodyPhysics;
 using UnityEngine;
 
-public class Rock : MonoBehaviour
+public class Rock : NetworkBehaviour
 {
    public float speed;
    private Rigidbody rb;
