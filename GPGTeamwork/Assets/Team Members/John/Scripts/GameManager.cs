@@ -7,21 +7,19 @@ namespace John
     public class GameManager : NetworkBehaviour
     {
         public event Action StartMusic;
-        
-        public void Start()
+        public event Action StartTimer;
+       
+        public void PlayMusic()
         {
-            if (isServer)
-            {
-                StartMusic += RPCPlayMusic;
-                
-            }
+            StartMusic?.Invoke();
+        }
+        
+        public void PlayTimer()
+        {
+            StartTimer?.Invoke();
         }
 
-        [ClientRpc]
-        public void RPCPlayMusic()
-        {
-            Debug.Log("Play the music now");
-        }
+        
         
         
     }

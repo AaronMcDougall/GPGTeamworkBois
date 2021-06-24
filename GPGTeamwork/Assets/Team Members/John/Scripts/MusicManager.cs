@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Mirror;
 using UnityEngine;
+using Mirror;
 
 namespace John
 {
@@ -10,37 +11,46 @@ namespace John
         public GameManager gameManager;
         public AudioSource audioSource;
 
-        //Client action occurs to trigger server 
-        private void Update()
+        public override void OnStartServer()
         {
-            Client();
+            base.OnStartServer();
+            
+            
+            if (isServer)
+            {
+                gameManager.StartMusic += RPCPlayTunes;
+                
+            }
         }
 
-        void Client()
+        public override void OnStopServer()
         {
-           if (Input.GetKeyDown(KeyCode.Space))
-           {
-               CmdPlayTunes();
-           } 
+            base.OnStopServer();
+            gameManager.StartMusic -= RPCPlayTunes;
         }
         
-        //Server send the message to all clients to do the thing
-        [Command(requiresAuthority = false)]
-        void CmdPlayTunes()
-        {
-            RPCPlayTunes();
-        }
-
-        // The thing happens
         [ClientRpc]
         void RPCPlayTunes()
         {
             audioSource.Play();
             Debug.Log("Time to Escape From The City!");
         }
+        
+        
+        [Command(requiresAuthority = false)]
+        void CmdPlayTunes()
+        {
+            RPCPlayTunes();
+        }
 
-
-
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                CmdPlayTunes();
+            }
+            
+        }
     }
 
 }
