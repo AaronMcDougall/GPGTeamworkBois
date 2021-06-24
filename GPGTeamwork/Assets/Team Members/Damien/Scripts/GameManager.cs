@@ -3,50 +3,54 @@ using System.Collections;
 using Mirror;
 using UnityEngine;
 
-public class GameManager : NetworkBehaviour
+namespace Damien
 {
-    public event Action PlayMusic;
-    public event Action TimerStart;
-    public event Action TimerStop;
+    public class GameManager : NetworkBehaviour
+    {
+        public event Action PlayMusic;
+        public event Action TimerStart;
+        public event Action TimerStop;
 
-    public int timerSeconds = 0;
+        public int timerSeconds = 0;
     
-    public void PressedStart()
-    {
-        PlayMusic?.Invoke();
-        TimerStart?.Invoke();
-        
-    }
-
-    public void PressedStop()
-    {
-        TimerStop?.Invoke();
-    }
-    
-    public void Start()
-    {
-        if (isServer)
+        public void PressedStart()
         {
-            TimerStart += RPCStartTimer;
-            TimerStop += RPCStopTimer;
+            PlayMusic?.Invoke();
+            TimerStart?.Invoke();
+        
         }
-    }
 
-    [ClientRpc]
-    public void RPCStartTimer()
-    {
-        StartCoroutine(Timer());
-    }
-    [ClientRpc]
-    public void RPCStopTimer()
-    {
-        StopCoroutine(Timer());
-    }
-
-    IEnumerator Timer()
-    {
-        yield return new WaitForSeconds(1f);
-        timerSeconds++;
-    }
+        public void PressedStop()
+        {
+            TimerStop?.Invoke();
+        }
     
+        public void Start()
+        {
+            if (isServer)
+            {
+                TimerStart += RPCStartTimer;
+                TimerStop += RPCStopTimer;
+            }
+        }
+
+        [ClientRpc]
+        public void RPCStartTimer()
+        {
+            StartCoroutine(Timer());
+        }
+        [ClientRpc]
+        public void RPCStopTimer()
+        {
+            StopCoroutine(Timer());
+        }
+
+        IEnumerator Timer()
+        {
+            yield return new WaitForSeconds(1f);
+            timerSeconds++;
+        }
+    
+    }
+
 }

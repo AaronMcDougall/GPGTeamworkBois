@@ -3,55 +3,47 @@ using System.Collections;
 using Mirror;
 using UnityEngine;
 
-public class MusicManager : NetworkBehaviour
+namespace John
 {
-   public GameManager gameManager;
-
-   //public int timer = 120;
-
-   public override void OnStartServer()
-   {
-       base.OnStartServer();
-       if (isServer)
-       {
-           gameManager.PlayMusic += RPCStartMusic;
-           //gameManager.TimerStart += RPCTimerGo;
-           //gameManager.TimerStop += RPCTimerStop;
-       }
-   }
-   public override void OnStopServer()
-   {
-       base.OnStopServer();
-       gameManager.PlayMusic -= RPCStartMusic;
-       //gameManager.TimerStart -= RPCTimerGo;
-       //gameManager.TimerStop -= RPCTimerStop;
-   }
-    [ClientRpc]
-    public void RPCStartMusic()
+    public class MusicManager : NetworkBehaviour
     {
-        Debug.Log("The music started to play");
-    }
-    /**
-    [ClientRpc]
-    public void RPCTimerGo()
-    {
-        StartCoroutine(Countdown());
-    }
+        public GameManager gameManager;
+        public AudioSource audioSource;
 
-    [ClientRpc]
-    public void RPCTimerStop()
-    {
-        StopCoroutine(Countdown());
-    }
-
-    IEnumerator Countdown()
-    {
-        for (;;)
+        //Client action occurs to trigger server 
+        private void Update()
         {
-            timer--;
-            Debug.Log("The timer is at " + timer);
-            yield return new WaitForSeconds(1f);
+            Client();
         }
+
+        void Client()
+        {
+           if (Input.GetKeyDown(KeyCode.Space))
+           {
+               CmdPlayTunes();
+           } 
+        }
+        
+        //Server send the message to all clients to do the thing
+        [Command(requiresAuthority = false)]
+        void CmdPlayTunes()
+        {
+            RPCPlayTunes();
+        }
+
+        // The thing happens
+        [ClientRpc]
+        void RPCPlayTunes()
+        {
+            audioSource.Play();
+            Debug.Log("Time to Escape From The City!");
+        }
+
+
+
     }
-    **/
+
 }
+
+    
+
