@@ -19,7 +19,6 @@ public class RoundManager : NetworkBehaviour
         if (isServer)
         {
             gameManager.StartTimer += RPCCountdown;
-            hasAuthority = true;
             counter = 3000.0f;
             startCount = false;
         }
@@ -32,7 +31,7 @@ public class RoundManager : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        counterText.text = ("Time Remaining: " + counter.ToString());
+        counterText.text = ("Time Remaining: " + counter.ToString("0"));
         if (startCount)
         {
             counter = (counter - Time.deltaTime);
