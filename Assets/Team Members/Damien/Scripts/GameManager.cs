@@ -10,6 +10,7 @@ namespace Damien
         public event Action PlayMusic;
         public event Action TimerStart;
         public event Action TimerStop;
+        public event Action TimerTick;
 
         public int timerSeconds = 0;
     
@@ -49,6 +50,8 @@ namespace Damien
         {
             yield return new WaitForSeconds(1f);
             timerSeconds++;
+            TimerTick?.Invoke();
+            
         }
     
     }

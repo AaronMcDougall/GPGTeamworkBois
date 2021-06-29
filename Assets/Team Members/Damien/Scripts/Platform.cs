@@ -7,6 +7,8 @@ using UnityEngine;
 
 public class Platform : NetworkBehaviour
 {
+    private int timer;
+    private int timeToMove;
     public GameObject thisPlatform;
     public GameManager gameManager;
 
@@ -15,12 +17,21 @@ public class Platform : NetworkBehaviour
         if (isServer)
         {
             thisPlatform = gameObject;
-            gameManager.TimerStart += RPCCountdown;
+            gameManager.TimerTick += RPCCountdown;
         }
     }
 
     [ClientRpc]
     void RPCCountdown()
+    {
+        timer++;
+        if (timer >= timeToMove)
+        {
+            MovePlatform();
+        }
+    }
+
+    void MovePlatform()
     {
         
     }
