@@ -10,7 +10,7 @@ namespace John
     {
         public GameManager gameManager;
         public AudioSource audioSource;
-
+       
         public override void OnStartServer()
         {
             base.OnStartServer();
@@ -33,7 +33,7 @@ namespace John
         void RPCPlayTunes()
         {
             audioSource.Play();
-            Debug.Log("Time to Escape From The City!");
+            Debug.Log("Music is Playing");
         }
         
         
@@ -49,7 +49,6 @@ namespace John
             {
                 CmdPlayTunes();
             }
-            
         }
     }
 

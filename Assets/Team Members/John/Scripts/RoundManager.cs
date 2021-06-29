@@ -31,7 +31,7 @@ public class RoundManager : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        counterText.text = ("Time Remaining: " + counter.ToString("0"));
+        counterText.text = ("Time Remaining: " + counter.ToString("0,000.00"));
         if (startCount)
         {
             counter = (counter - Time.deltaTime);
