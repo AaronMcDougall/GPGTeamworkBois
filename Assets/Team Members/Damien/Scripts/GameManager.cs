@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using Mirror;
 using UnityEngine;
 
@@ -13,19 +14,19 @@ namespace Damien
         public event Action TimerTick;
 
         public int timerSeconds = 0;
-    
+
+        public List<GameObject> platformList = new List<GameObject>();
         public void PressedStart()
         {
             PlayMusic?.Invoke();
             TimerStart?.Invoke();
-        
         }
 
         public void PressedStop()
         {
             TimerStop?.Invoke();
         }
-    
+
         public void Start()
         {
             if (isServer)
@@ -40,6 +41,7 @@ namespace Damien
         {
             StartCoroutine(Timer());
         }
+
         [ClientRpc]
         public void RPCStopTimer()
         {
@@ -51,9 +53,6 @@ namespace Damien
             yield return new WaitForSeconds(1f);
             timerSeconds++;
             TimerTick?.Invoke();
-            
         }
-    
     }
-
 }
