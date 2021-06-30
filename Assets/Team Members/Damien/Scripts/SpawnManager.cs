@@ -3,21 +3,26 @@ using System.Collections.Generic;
 using Mirror;
 using UnityEngine;
 
-public class SpawnManager : NetworkBehaviour
+namespace Damien
 {
-    public GameObject playerObject;
-    // Start is called before the first frame update
-    void OnStartServer()
+    public class SpawnManager : NetworkBehaviour
     {
-        if (isServer)
-        {
-            
-        }
-    }
+        public GameObject playerObject;
+        public List<Vector3> spawnPoints;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        // Start is called before the first frame update
+        void OnStartServer()
+        {
+            if (isServer)
+            {
+                
+            }
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
     }
 }

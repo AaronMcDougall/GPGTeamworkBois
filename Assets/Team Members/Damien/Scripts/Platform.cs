@@ -5,35 +5,38 @@ using Damien;
 using Mirror;
 using UnityEngine;
 
-public class Platform : NetworkBehaviour
+namespace Damien
 {
-    private int timer = 0;
-    public int timeToMove = 60;
-    public GameObject thisPlatform;
-    public GameManager gameManager;
-
-    void Awake()
+    public class Platform : NetworkBehaviour
     {
-        if (isServer)
+        private int timer = 0;
+        public int timeToMove = 60;
+        public GameObject thisPlatform;
+        public GameManager gameManager;
+
+        void Awake()
         {
-            thisPlatform = gameObject;
-            gameManager.TimerTick += RPCCountdown;
+            if (isServer)
+            {
+                thisPlatform = gameObject;
+                gameManager.TimerTick += RPCCountdown;
+            }
         }
-    }
 
-    [ClientRpc]
-    void RPCCountdown()
-    {
-        timer++;
-        if (timer >= timeToMove)
+        [ClientRpc]
+        void RPCCountdown()
         {
-            MovePlatform();
-            gameManager.TimerTick -= RPCCountdown;
+            timer++;
+            if (timer >= timeToMove)
+            {
+                MovePlatform();
+                gameManager.TimerTick -= RPCCountdown;
+            }
         }
-    }
 
-    void MovePlatform()
-    {
-        Debug.Log("Platform Moving");
+        void MovePlatform()
+        {
+            Debug.Log("Platform Moving");
+        }
     }
 }
