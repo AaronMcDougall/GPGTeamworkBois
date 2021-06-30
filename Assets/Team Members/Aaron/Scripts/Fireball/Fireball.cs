@@ -2,24 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fireball : MonoBehaviour
+namespace Fireball
 {
-    public float speed;
 
-    void Start()
+    public class Fireball : MonoBehaviour
     {
-        //set direction
-        //set speed
-    }
+        // Start is called before the first frame update
+        void Start()
+        {
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+        }
 
-    public void OnCollisionEnter(Collision other)
-    {
-        this.transform.localScale = new Vector3(2, 2, 2);
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
+
+        public void FireballSpawn()
+        {
+            
+        }
     }
 }

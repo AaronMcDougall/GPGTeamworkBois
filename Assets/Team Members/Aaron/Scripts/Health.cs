@@ -5,25 +5,30 @@ using System;
 
 public class Health : MonoBehaviour
 {
-    public event Action DamageTaken;
-    public float healthRemaining;
+    public float maxHealth;
+
     public float damageTaken;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        //subscribes and activates when GetHit is fired off
-        FindObjectOfType<playerScript>().GetHit += TakeDamage;
-
-        //Gets the current health value
-        GetComponent<Health>().healthRemaining = healthRemaining;
-    }
-
+    public event Action TakeDamageEvent;
+    public event Action DeathEvent;
+   
+    
     public void TakeDamage()
     {
-        //subtracts the damage dealt by the attacker
-        healthRemaining -= damageTaken;
-        //fires off the damage taken event for anybody listening IE death script, wounded animation/sound effects etc
-        DamageTaken();
+        if (maxHealth <= 0)
+        {
+            CallDeathEvent();
+        }
+        else
+        {
+            TakeDamageEvent?.Invoke();
+            maxHealth -= damageTaken;
+            Debug.Log("Y'all got hurt.");
+        }
+    }
+
+    public void CallDeathEvent()
+    {
+        DeathEvent?.Invoke();
+        Debug.Log("Y'all are dead.");
     }
 }
