@@ -1,18 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-public class MenuState : MonoBehaviour
+namespace Menu
 {
-    // Start is called before the first frame update
-    void Start()
+    public class MenuState : MenuStateBase
     {
-        
-    }
+        public event Action OnMenu;
+        public override void Enter()
+        {
+            base.Enter();
+            OnMenu();
+            //stop game input
+            //start menu input
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public override void Execute()
+        {
+            base.Execute();
+        }
+
+        public override void Exit()
+        {
+            base.Exit();
+            //stop menu input
+            //start game input
+        }
     }
 }
