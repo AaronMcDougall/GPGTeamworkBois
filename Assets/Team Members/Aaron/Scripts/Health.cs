@@ -7,20 +7,9 @@ public class Health : MonoBehaviour
 {
     public float maxHealth;
 
-    public float damageTaken;
-    public event Action TakeDamageEvent;
-    public event Action DeathEvent;
+    public event Action DeathEvent;    
 
-    public void OnTriggerEnter(Collider collision)
-    {
-        if(collision.gameObject.name == "Lava")
-        {
-            damageTaken = 200;
-            TakeDamage();
-        }    
-    }
-
-    public void TakeDamage()
+    public void TakeDamage(float damageTaken)
     {
         if (maxHealth <= 0)
         {
@@ -28,7 +17,6 @@ public class Health : MonoBehaviour
         }
         else
         {
-            TakeDamageEvent?.Invoke();
             maxHealth -= damageTaken;
             Debug.Log("Y'all got hurt.");
             CallDeathEvent();
@@ -41,7 +29,11 @@ public class Health : MonoBehaviour
         {
             DeathEvent?.Invoke();
             Debug.Log("Y'all are dead.");
-        }
-        
+        }        
+    }
+
+    private void OnEnable()
+    {
+ 
     }
 }

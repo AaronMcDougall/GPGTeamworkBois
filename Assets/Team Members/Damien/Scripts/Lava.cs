@@ -22,7 +22,7 @@ namespace Damien
 
         private void OnTriggerEnter(Collider other)
         {
-            if (gameObject.GetComponent<FPSPlayerController>())
+            if (gameObject.GetComponent<Health>())
             {
                 Debug.Log("Player Died");
             }

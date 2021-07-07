@@ -9,12 +9,7 @@ public class HealthEditor : Editor
 
     public override void OnInspectorGUI()
     {
-        base.OnInspectorGUI();
-        
-        if (GUILayout.Button("Take Damage"))
-        {
-            ((Health) target).TakeDamage();
-        }
+        base.OnInspectorGUI();       
 
         if (GUILayout.Button("Death"))
         {
