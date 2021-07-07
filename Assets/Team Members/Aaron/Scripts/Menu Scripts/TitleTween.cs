@@ -5,39 +5,53 @@ using UnityEngine;
 using DG.Tweening;
 using MiscUtil.Xml.Linq.Extensions;
 
-public class TitleTween : MonoBehaviour
+namespace Menu
 {
-    public float tweakLevel;
-    public float target;
-    public float duration;
-
-    public event Action yerp;
-
-    // Start is called before the first frame update
-    void Start()
+    public class TitleTween : MonoBehaviour
     {
-        DOTween.To(Getter, Setter, target, duration).SetEase(Ease.OutBounce).OnComplete(Finish);
-    }
+        public float tweakLevel;
+        public float target;
+        public float duration;
 
-    // Update is called once per frame
+        public AudioSource MenuTrack;
+
+        // Start is called before the first frame update
+        void Start()
+        {
+        
+        }
+
+        public void OnEnable()
+        {
+            FindObjectOfType<EscapeEventManager>().RunEscape += TitleDrop;
+        }
+
+        public void TitleDrop()
+        {
+            DOTween.To(Getter, Setter, target, duration).SetEase(Ease.OutBounce).OnComplete(Finish);
+            MenuTrack.Play();
+        }
+
+
     void Update()
-    {
-        duration -= Time.deltaTime;
-    }
+        {
+            //duration -= Time.deltaTime;
+        }
 
-    private float Getter()
-    {
-        return tweakLevel;
-    }
+        private float Getter()
+        {
+            return tweakLevel;
+        }
 
-    private void Setter(float pnewvalue)
-    {
-        tweakLevel = pnewvalue;
-        transform.localPosition = new Vector3(0f, tweakLevel, 0f);
-    }
+        private void Setter(float pnewvalue)
+        {
+            tweakLevel = pnewvalue;
+            transform.localPosition = new Vector3(0f, tweakLevel, 0f);
+        }
 
-    private void Finish()
-    {
-        yerp();
+        private void Finish()
+        {
+
+        }
     }
 }

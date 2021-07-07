@@ -11,9 +11,7 @@ namespace Menu
         public override void Enter()
         {
             base.Enter();
-            OnMenu();
-            //stop game input
-            //start menu input
+            Debug.Log("Menu State");
         }
 
         public override void Execute()
@@ -24,8 +22,6 @@ namespace Menu
         public override void Exit()
         {
             base.Exit();
-            //stop menu input
-            //start game input
         }
     }
 }

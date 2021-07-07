@@ -4,43 +4,52 @@ using UnityEngine;
 using DG.Tweening;
 using MiscUtil.Xml.Linq.Extensions;
 
-public class MenuTween : MonoBehaviour
+namespace Menu
 {
-    public float alphaTargetLevel;
-    public float text;
-    public float duration;
-
-    // Start is called before the first frame update
-    void Start()
+    public class MenuTween : MonoBehaviour
     {
-        //DOTween.ToAlpha(Getter, Setter, alphaTargetLevel, duration);
-        GetComponent<CanvasGroup>().DOFade(alphaTargetLevel, duration);
+        public float alphaTargetLevel;
+        public float duration;
+        public float textAlpha;
+
+        public CanvasGroup menu;
+
+        // Start is called before the first frame update
+        void Start()
+        {
+            menu.alpha = 0;            
+        }
+
+        public void OnEnable()
+        {
+            FindObjectOfType<EscapeEventManager>().RunEscape += MenuAppear;
+        }
+
+        public void MenuAppear()
+        {
+            DOTween.To(Getter, Setter, alphaTargetLevel, duration);
+        }
+        private float Getter()
+        {
+            return textAlpha;
+        }
+
+        private void Setter(float newAlpha)
+        {
+            textAlpha = newAlpha;
+
+            GetComponent<CanvasGroup>().alpha = textAlpha;
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            //duration -= Time.deltaTime;
+        }
+
+
+
+
     }
-
-    private float Getter()
-    {
-        return text;
-    }
-
-    private void Setter()
-    {
-
-    }
-
-
-    
-    public void OnEnable()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        duration -= Time.deltaTime;
-    }
-
-    
-
-
 }
+
