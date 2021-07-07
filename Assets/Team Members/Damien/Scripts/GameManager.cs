@@ -1,8 +1,9 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using Mirror;
 using UnityEngine;
+
+
 
 namespace Damien
 {
@@ -12,14 +13,38 @@ namespace Damien
         public event Action TimerStart;
         public event Action TimerStop;
         public event Action TimerTick;
-
+        public Platform platform;
         public int timerSeconds = 0;
+        public GameObject[] platforms;
+        public bool platformEnabled;
+        
 
-        public List<GameObject> platformList = new List<GameObject>();
         public void PressedStart()
         {
             PlayMusic?.Invoke();
             TimerStart?.Invoke();
+            RoundStart();
+        }
+
+       
+
+        public void RoundStart()
+        {
+            foreach(GameObject platform in platforms)
+            {
+                //see if there is a platform already on the map
+                if (!platformEnabled)
+                {
+                    //see if the platform currently selected has been spawned recently
+                    //if (!Platform)
+                    {
+                        gameObject.SetActive(true);
+                        platformEnabled = true;
+                        
+                    }
+                    
+                }
+            }
         }
 
         public void PressedStop()

@@ -13,12 +13,14 @@ namespace Damien
         public int timeToMove = 60;
         public GameObject thisPlatform;
         public GameManager gameManager;
+        public bool enabledRecently;
 
         void Awake()
         {
             if (isServer)
             {
                 thisPlatform = gameObject;
+                enabledRecently = false;
                 gameManager.TimerTick += RPCCountdown;
             }
         }
@@ -37,6 +39,7 @@ namespace Damien
         void MovePlatform()
         {
             Debug.Log("Platform Moving");
+            
         }
     }
 }

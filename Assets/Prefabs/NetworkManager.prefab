@@ -9,9 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5623524013952677058}
-  - component: {fileID: 5623524013952677061}
-  - component: {fileID: 5623524013952677059}
-  - component: {fileID: 5623524013952677060}
+  - component: {fileID: 191333825072047058}
+  - component: {fileID: 5342400388268833140}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -33,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5623524013952677061
+--- !u!114 &191333825072047058
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,47 +41,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 5623524013952677062}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6442dc8070ceb41f094e44de0bf87274, type: 3}
+  m_Script: {fileID: 11500000, guid: 8aab4c8111b7c411b9b92cf3dbc5bd4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  showGUI: 1
-  offsetX: 0
-  offsetY: 0
---- !u!114 &5623524013952677059
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5623524013952677062}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20460c43f0320ed4baf8c1dcf953eafa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dontDestroyOnLoad: 0
+  dontDestroyOnLoad: 1
   PersistNetworkManagerToOfflineScene: 0
   runInBackground: 1
   autoStartServerBuild: 1
   serverTickRate: 30
-  serverBatching: 0
+  serverBatching: 1
   serverBatchInterval: 0
   offlineScene: 
   onlineScene: 
-  transport: {fileID: 5623524013952677060}
+  transport: {fileID: 5342400388268833140}
   networkAddress: localhost
   maxConnections: 100
   disconnectInactiveConnections: 0
   disconnectInactiveTimeout: 60
   authenticator: {fileID: 0}
-  playerPrefab: {fileID: 897184729387425976, guid: dc2c4328591bef748abb8df795c17202, type: 3}
+  playerPrefab: {fileID: 0}
   autoCreatePlayer: 1
-  playerSpawnMethod: 1
-  spawnPrefabs:
-  - {fileID: 0}
-  mainPanel: {fileID: 0}
-  playersPanel: {fileID: 0}
---- !u!114 &5623524013952677060
+  playerSpawnMethod: 0
+  spawnPrefabs: []
+--- !u!114 &5342400388268833140
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
