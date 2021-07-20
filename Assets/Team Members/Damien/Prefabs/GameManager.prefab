@@ -43,3 +43,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0efd037cf01451946bf10fde7230bcb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  platform: {fileID: 0}
+  timerSeconds: 0
+  randomNumber: 0
+  listOfPlatforms:
+  - {fileID: 343136686319942193, guid: d1062a5bb061643438b70714e0dd9f39, type: 3}
+  - {fileID: 4383205195949643619, guid: e4b2521770a5aca47b574bac7d085276, type: 3}
+  - {fileID: 8860390117057601299, guid: 22c9ed5dd1c338644b33ac1f09d29fa8, type: 3}
+  - {fileID: 2376472978881671559, guid: 58b69ddc780c0f24480ccc33a95c29fb, type: 3}
+  platformEnabled: 0

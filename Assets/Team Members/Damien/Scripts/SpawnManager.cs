@@ -8,7 +8,7 @@ namespace Damien
     public class SpawnManager : NetworkBehaviour
     {
         public GameObject playerObject;
-        public List<Vector3> spawnPoints;
+        public List<Transform> spawnPoints;
 
         // Start is called before the first frame update
         void OnStartServer()

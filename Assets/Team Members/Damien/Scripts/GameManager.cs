@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using Mirror;
 using UnityEngine;
-
+using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 
 namespace Damien
@@ -15,34 +17,32 @@ namespace Damien
         public event Action TimerTick;
         public Platform platform;
         public int timerSeconds = 0;
-        public GameObject[] platforms;
+        public int randomNumber;
+        [FormerlySerializedAs("platforms")] public GameObject[] listOfPlatforms;
         public bool platformEnabled;
-        
+
 
         public void PressedStart()
         {
+            randomNumber = Random.Range(0, listOfPlatforms.Length + 1);
             PlayMusic?.Invoke();
             TimerStart?.Invoke();
             RoundStart();
         }
 
-       
 
         public void RoundStart()
         {
-            foreach(GameObject platform in platforms)
+            
+            foreach (GameObject platform in listOfPlatforms)
             {
                 //see if there is a platform already on the map
                 if (!platformEnabled)
                 {
-                    //see if the platform currently selected has been spawned recently
-                    //if (!Platform)
                     {
-                        gameObject.SetActive(true);
+                        listOfPlatforms[randomNumber].SetActive(true);
                         platformEnabled = true;
-                        
                     }
-                    
                 }
             }
         }
@@ -66,14 +66,15 @@ namespace Damien
         {
             StartCoroutine(Timer());
         }
-
+        
         [ClientRpc]
         public void RPCStopTimer()
         {
             StopCoroutine(Timer());
         }
+        
 
-        IEnumerator Timer()
+            IEnumerator Timer()
         {
             yield return new WaitForSeconds(1f);
             timerSeconds++;
