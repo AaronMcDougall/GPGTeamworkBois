@@ -33,14 +33,13 @@ namespace Damien
 
         public void RoundStart()
         {
-            
             foreach (GameObject platform in listOfPlatforms)
             {
                 //see if there is a platform already on the map
                 if (!platformEnabled)
                 {
                     {
-                        listOfPlatforms[randomNumber].SetActive(true);
+                        Instantiate(listOfPlatforms[randomNumber]);
                         platformEnabled = true;
                     }
                 }
@@ -52,13 +51,11 @@ namespace Damien
             TimerStop?.Invoke();
         }
 
-        public void Start()
+        public override void OnStartServer()
         {
-            if (isServer)
-            {
-                TimerStart += RPCStartTimer;
-                TimerStop += RPCStopTimer;
-            }
+            PressedStart(); //TODO: change to menu later
+            TimerStart += RPCStartTimer;
+            TimerStop += RPCStopTimer;
         }
 
         [ClientRpc]
@@ -66,15 +63,15 @@ namespace Damien
         {
             StartCoroutine(Timer());
         }
-        
+
         [ClientRpc]
         public void RPCStopTimer()
         {
             StopCoroutine(Timer());
         }
-        
 
-            IEnumerator Timer()
+
+        IEnumerator Timer()
         {
             yield return new WaitForSeconds(1f);
             timerSeconds++;

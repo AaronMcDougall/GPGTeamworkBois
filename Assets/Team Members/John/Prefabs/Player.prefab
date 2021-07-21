@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1286764961}
   - component: {fileID: 4966780384374306873}
   - component: {fileID: 920246868012894261}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -187,7 +187,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 0
-  damageTaken: 0
 --- !u!1 &8125269078273469362
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,7 +251,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4294967167
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
