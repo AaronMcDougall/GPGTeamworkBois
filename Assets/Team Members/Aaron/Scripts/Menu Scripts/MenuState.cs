@@ -7,7 +7,7 @@ namespace Menu
 {
     public class MenuState : MenuStateBase
     {
-        public event Action OnMenu;
+        //public event Action OnMenu;
         public override void Enter()
         {
             base.Enter();

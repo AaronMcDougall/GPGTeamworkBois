@@ -9,7 +9,7 @@ public class Health : MonoBehaviour
 
     public event Action DeathEvent;    
 
-    public void TakeDamage(float damageTaken)
+    public void TakeDamage(float damageDealt)
     {
         if (maxHealth <= 0)
         {
@@ -17,7 +17,7 @@ public class Health : MonoBehaviour
         }
         else
         {
-            maxHealth -= damageTaken;
+            maxHealth -= damageDealt;
             Debug.Log("Y'all got hurt.");
             CallDeathEvent();
         }
@@ -29,6 +29,7 @@ public class Health : MonoBehaviour
         {
             DeathEvent?.Invoke();
             Debug.Log("Y'all are dead.");
+            maxHealth = 0;
         }        
     }
 
