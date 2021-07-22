@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
 using MiscUtil.Xml.Linq.Extensions;
 
 namespace Menu
 {
     public class MenuTween : MonoBehaviour
     {
+        public Button options;
+        public Button quit;
+
         public float alphaTargetLevel;
         public float duration;
         public float textAlpha;
@@ -44,9 +48,15 @@ namespace Menu
         // Update is called once per frame
         void Update()
         {
-            //duration -= Time.deltaTime;
+            //options.onClick;
+            
+            
         }
 
+        public static void Quit()
+        {
+            Application.Quit();
+        }
 
 
 

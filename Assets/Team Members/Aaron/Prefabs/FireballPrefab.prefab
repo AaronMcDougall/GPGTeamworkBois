@@ -126,4 +126,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46db9cca58e63294fafbb1e02d2b2ff9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
+  spawnPoint: {x: 0, y: 0, z: 0}
+  fireballPrefab: {fileID: 6700726726184790559, guid: d0040bd0cd2852241b60426d101bdf6f, type: 3}
