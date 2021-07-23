@@ -5,37 +5,22 @@ using System;
 
 public class DamageDealt : MonoBehaviour
 {
-
-    public event Action TakeDamageEvent;
     Rigidbody rb;
 
     public float damageDealt;
-    // Start is called before the first frame update
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void Update()
+    //Assuming our damage is dealt from getting physically hit by the other player/obstacle
+    public void OnCollisionEnter(Collision collision)
     {
-        
-    }
-
-    public void DealDamage()
-    {
-        /*if(gameObject.GetComponent<Health>())
+        if(collision.gameObject.GetComponent<Health>())
         {
-            GetComponent<Health>().TakeDamage(DamageDealt);
-        }*/
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.GetComponent<Health>())
-        {
-            GetComponent<Health>().TakeDamage(damageDealt);
+            //is there a shorter way to write this to get the same reference?
+            collision.gameObject.GetComponent<Health>().TakeDamage(damageDealt);
         }
     }
-
 }

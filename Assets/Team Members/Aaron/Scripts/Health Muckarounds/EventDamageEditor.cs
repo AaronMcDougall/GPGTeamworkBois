@@ -1,20 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 using UnityEditor;
 
-[CustomEditor(typeof(DamageDealt))]
-public class TakeDamageScript : Editor
+[CustomEditor(typeof(DamageEvent))]
+
+public class EventDamageEditor : Editor
 {
     public override void OnInspectorGUI()
     {
         base.OnInspectorGUI();
 
-        if(GUILayout.Button("Deal Damage"))
+        if(GUILayout.Button("Fire Damage Event"))
         {
-            ((DamageDealt)target).DealDamage();
+            ((DamageEvent)target).CallDamageEvent();
         }
     }
-
 }
+

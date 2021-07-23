@@ -13,7 +13,7 @@ public class HealthEditor : Editor
 
         if (GUILayout.Button("Death"))
         {
-            ((Health) target).CallDeathEvent();
+            ((Health)target).CallDeathEvent();
         }
     }
 
