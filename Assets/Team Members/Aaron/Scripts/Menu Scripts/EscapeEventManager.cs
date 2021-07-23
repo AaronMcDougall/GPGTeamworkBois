@@ -8,10 +8,16 @@ namespace Menu
     public class EscapeEventManager : MonoBehaviour
     {
         public event Action RunEscape;
+        public event Action RunReturn;
 
         public void RunEscapeMenu()
         {
             RunEscape();
+        }
+
+        public void RunReturnEvent()
+        {
+            RunReturn();
         }
     }
 }

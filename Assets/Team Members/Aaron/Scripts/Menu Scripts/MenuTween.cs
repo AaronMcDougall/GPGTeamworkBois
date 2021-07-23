@@ -9,9 +9,6 @@ namespace Menu
 {
     public class MenuTween : MonoBehaviour
     {
-        public Button options;
-        public Button quit;
-
         public float alphaTargetLevel;
         public float duration;
         public float textAlpha;
@@ -27,12 +24,14 @@ namespace Menu
         public void OnEnable()
         {
             FindObjectOfType<EscapeEventManager>().RunEscape += MenuAppear;
+            //FindObjectOfType<ReturnEvent>().RunReturn += MenuDisappear;
         }
 
         public void MenuAppear()
         {
             DOTween.To(Getter, Setter, alphaTargetLevel, duration);
         }
+
         private float Getter()
         {
             return textAlpha;
@@ -45,21 +44,10 @@ namespace Menu
             GetComponent<CanvasGroup>().alpha = textAlpha;
         }
 
-        // Update is called once per frame
-        void Update()
+       /* public void MenuDisappear()
         {
-            //options.onClick;
-            
-            
-        }
 
-        public static void Quit()
-        {
-            Application.Quit();
-        }
-
-
-
+        }*/
     }
 }
 

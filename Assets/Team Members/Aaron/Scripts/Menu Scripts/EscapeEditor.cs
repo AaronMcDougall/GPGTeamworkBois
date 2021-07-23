@@ -16,6 +16,11 @@ namespace Menu
             {
                 ((EscapeEventManager)target).RunEscapeMenu();
             }
+
+            if(GUILayout.Button("Run Return"))
+            {
+                ((EscapeEventManager)target).RunReturnEvent();
+            }
         }
     }
 }
