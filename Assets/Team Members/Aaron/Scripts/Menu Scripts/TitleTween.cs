@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using DG.Tweening;
-using MiscUtil.Xml.Linq.Extensions;
+//using MiscUtil.Xml.Linq.Extensions;
 
 namespace Menu
 {

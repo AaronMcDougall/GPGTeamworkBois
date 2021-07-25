@@ -11,9 +11,9 @@ public class SpawnEditor : Editor
     {
         base.OnInspectorGUI();
 
-        if (GUILayout.Button("Update Spawnpoint CoOrd"))
+        if (GUILayout.Button("Spawn Items"))
         {
-            ((SpawnPoints) target).GetSpawns();
+            ((SpawnPoints)target).StartCoroutine("SpawnItem");
         }
     }
 }

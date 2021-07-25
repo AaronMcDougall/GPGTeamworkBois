@@ -2,41 +2,33 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Fireball
 { public class SpawnPoints : MonoBehaviour
     {
-        public float spawnX;
-        public float spawnY;
-        public float spawnZ;
+        public GameObject objectToSpawn;
+        public int amountToSpawn;
+        public float spawnDelay;
 
-        private void Start()
-        {
-            getSpawnX();
-            getSpawnY();
-            getSpawnZ();
-        }
+        public float xSpawnMin;
+        public float xSpawnMax;
+        public float zSpawnMin;
+        public float zSpawnMax;
+        public float ySpawn;
 
-        public void getSpawnX()
-        {
-            spawnX = this.transform.position.x;
-        }
-        
-        public void getSpawnY()
-        {
-            spawnY = this.transform.position.y;
-        }
 
-        public void getSpawnZ()
+        IEnumerator SpawnItem()
         {
-            spawnZ = this.transform.position.z;
+            for (int i = 0; i < amountToSpawn; i++)
+            {
+                Instantiate(objectToSpawn,
+                    new Vector3(Random.Range(xSpawnMin, xSpawnMax), ySpawn, Random.Range(zSpawnMin, zSpawnMax)),
+                    Quaternion.Euler(0, 0, 0));
+
+                yield return new WaitForSeconds(spawnDelay);
+            }
         }
 
-        public void GetSpawns()
-        {
-            getSpawnX();
-            getSpawnY();
-            getSpawnZ();
-        }
     }
 }

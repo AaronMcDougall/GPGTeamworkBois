@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 1992449071376572983}
   - component: {fileID: 1352058036854910636}
   - component: {fileID: 6176115539115772999}
-  - component: {fileID: 5314953756614853202}
   m_Layer: 0
   m_Name: FireballPrefab
   m_TagString: Untagged
@@ -114,17 +113,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5314953756614853202
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3043855259136583260}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46db9cca58e63294fafbb1e02d2b2ff9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnPoint: {x: 0, y: 0, z: 0}
-  fireballPrefab: {fileID: 6700726726184790559, guid: d0040bd0cd2852241b60426d101bdf6f, type: 3}
