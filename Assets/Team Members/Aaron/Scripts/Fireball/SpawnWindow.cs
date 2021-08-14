@@ -15,28 +15,27 @@ public class SpawnWindow : EditorWindow
     public float xSpawnMinLimit;
     public float xSpawnMax;
     public float xSpawnMaxLimit;
-    
+
     //Z Spawn Variables
     public float zSpawnMin;
     public float zSpawnMinLimit;
     public float zSpawnMax;
     public float zSpawnMaxLimit;
-    
+
     //Y Spawn Variable
     public int ySpawn;
 
 
-
     //Scroll Variable
     public Vector2 scrollPos;
-    
-    
+
+
     //Creates Window
-    
+
     [MenuItem("Custom Windows/Spawn Window")]
     static void Init()
     {
-        SpawnWindow window = (SpawnWindow)EditorWindow.GetWindow(typeof(SpawnWindow));
+        SpawnWindow window = (SpawnWindow) EditorWindow.GetWindow(typeof(SpawnWindow));
         window.Show();
     }
 
@@ -46,10 +45,11 @@ public class SpawnWindow : EditorWindow
 
         //GameObject code
         GUILayout.Label("Item to Spawn", EditorStyles.boldLabel);
-        itemToSpawn = (GameObject)EditorGUILayout.ObjectField("Object to Spawn", itemToSpawn, typeof(GameObject), false);
+        itemToSpawn =
+            (GameObject) EditorGUILayout.ObjectField("Object to Spawn", itemToSpawn, typeof(GameObject), false);
         amountToSpawn = EditorGUILayout.IntField("Amount to Spawn", amountToSpawn);
         spawnDelay = EditorGUILayout.FloatField("Spawn Frequency", spawnDelay);
-        
+
         //X location code
         GUILayout.Label("Spawn Location Range", EditorStyles.boldLabel);
         GUILayout.BeginHorizontal();
@@ -77,7 +77,6 @@ public class SpawnWindow : EditorWindow
         ySpawn = EditorGUILayout.IntField("Height", ySpawn);
 
 
-
         GUILayout.Label("Spawn Item", EditorStyles.boldLabel);
         //spawn button
         if (GUILayout.Button("Spawn Objects"))
@@ -86,12 +85,17 @@ public class SpawnWindow : EditorWindow
             {
                 for (int i = 0; i < amountToSpawn; i++)
                 {
-                    GameObject copy = Instantiate(itemToSpawn,
-                        new Vector3((Random.Range(xSpawnMin, xSpawnMax)), ySpawn, Random.Range(zSpawnMin, zSpawnMax)),
-                        Quaternion.Euler(0, 0, 0));
+                    if (Time.deltaTime > spawnDelay)
+                    {
+                        GameObject copy = Instantiate(itemToSpawn,
+                            new Vector3((Random.Range(xSpawnMin, xSpawnMax)), ySpawn,
+                                Random.Range(zSpawnMin, zSpawnMax)),
+                            Quaternion.Euler(0, 0, 0));
+                    }
                 }
             }
         }
+
         EditorGUILayout.EndScrollView();
     }
 }

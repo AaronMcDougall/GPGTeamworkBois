@@ -1,5 +1,34 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!111 &3569442037993952934
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6999683450853320239}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: cef2f3e241bbbeb4faeb6123a207eeb9, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: cef2f3e241bbbeb4faeb6123a207eeb9, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!114 &-4705748588866690613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6999683450853320239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34fa9760fcf43574c9c9fec5033f9a46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageDealt: 25
 --- !u!1001 &804971974284681402
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -57,7 +86,12 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: c2e2ac09aee5cb74c9925841deca0586, type: 2}
     - target: {fileID: 7640368578342471317, guid: 9c07b222f0639624da08fcab48307e4c, type: 3}
       propertyPath: m_Name
-      value: Explosion
+      value: Explosion Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c07b222f0639624da08fcab48307e4c, type: 3}
+--- !u!1 &6999683450853320239 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7640368578342471317, guid: 9c07b222f0639624da08fcab48307e4c, type: 3}
+  m_PrefabInstance: {fileID: 804971974284681402}
+  m_PrefabAsset: {fileID: 0}

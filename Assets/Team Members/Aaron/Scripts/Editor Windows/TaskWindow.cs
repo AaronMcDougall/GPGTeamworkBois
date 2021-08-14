@@ -18,11 +18,11 @@ public class TaskWindow : EditorWindow
     public float xMax = 100;
     public float xMaxLimit = 100;
  
-    //Location y coordinates
-    public float yMin = 0;
-    public float yMinLimit = 0;
-    public float yMax = 100;
-    public float yMaxLimit = 100;
+    //Location z coordinates
+    public float zMin = 0;
+    public float zMinLimit = 0;
+    public float zMax = 100;
+    public float zMaxLimit = 100;
 
     //Rotation x values
     public float xRotMin = 0;
@@ -30,11 +30,11 @@ public class TaskWindow : EditorWindow
     public float xRotMax = 359;
     public float xRotMaxLimit = 359;
 
-    //Rotation y values
-    public float yRotMin = 0;
-    public float yRotMinLimit = 0;
-    public float yRotMax = 359;
-    public float yRotMaxLimit = 359;
+    //Rotation z values
+    public float zRotMin = 0;
+    public float zRotMinLimit = 0;
+    public float zRotMax = 359;
+    public float zRotMaxLimit = 359;
 
     //List for last spawned group of objects
     public List<GameObject> lastSpawned = new List<GameObject>();
@@ -70,12 +70,12 @@ public class TaskWindow : EditorWindow
         EditorGUILayout.LabelField("Maximum X Value: ", xMax.ToString());
         GUILayout.EndHorizontal();
         EditorGUILayout.MinMaxSlider(ref xMin, ref xMax, xMinLimit, xMaxLimit);
-        //Diplay current, set new Y values for spawn location
+        //Diplay current, set new Z values for spawn location
         GUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("Minimum Y Value: ", yMin.ToString());
-        EditorGUILayout.LabelField("Minimum Y Value: ", yMax.ToString());
+        EditorGUILayout.LabelField("Minimum Z Value: ", zMin.ToString());
+        EditorGUILayout.LabelField("Minimum Z Value: ", zMax.ToString());
         GUILayout.EndHorizontal();
-        EditorGUILayout.MinMaxSlider(ref yMin, ref yMax, yMinLimit, yMaxLimit);
+        EditorGUILayout.MinMaxSlider(ref zMin, ref zMax, zMinLimit, zMaxLimit);
 
 
         //Rotation Settings
@@ -86,12 +86,12 @@ public class TaskWindow : EditorWindow
         EditorGUILayout.LabelField("Maximum X Value: ", xRotMax.ToString());
         GUILayout.EndHorizontal();
         EditorGUILayout.MinMaxSlider(ref xRotMin, ref xRotMax, xRotMinLimit, xRotMaxLimit);
-        //Display current, set new y values for spawn rotation
+        //Display current, set new Z values for spawn rotation
         GUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("Minimum Y Value: ", yRotMin.ToString());
-        EditorGUILayout.LabelField("Maximum Y Value: ", yRotMax.ToString());
+        EditorGUILayout.LabelField("Minimum Z Value: ", zRotMin.ToString());
+        EditorGUILayout.LabelField("Maximum Z Value: ", zRotMax.ToString());
         GUILayout.EndHorizontal();
-        EditorGUILayout.MinMaxSlider(ref yRotMin, ref yRotMax, yRotMinLimit, yRotMaxLimit);
+        EditorGUILayout.MinMaxSlider(ref zRotMin, ref zRotMax, zRotMinLimit, zRotMaxLimit);
 
 
         //Button which will spawn objects based on various previous inputs
@@ -102,8 +102,8 @@ public class TaskWindow : EditorWindow
             {
                 for (int i = 0; i < objectAmount; i++)
                 {                    
-                    GameObject copy = Instantiate(source, new Vector3((Random.Range(xMin, xMax)), (Random.Range(yMin, yMax)), 0), 
-                    Quaternion.Euler((Random.Range(xRotMin, xRotMax)), (Random.Range(yRotMin, yRotMax)), 0));           
+                    GameObject copy = Instantiate(source, new Vector3((Random.Range(xMin, xMax)), 0, (Random.Range(zMin, zMax))), 
+                    Quaternion.Euler((Random.Range(xRotMin, xRotMax)), 0, (Random.Range(zRotMin, zRotMax))));           
 
                     lastSpawned.Add(copy);
                     allSpawned.Add(copy);
@@ -119,20 +119,20 @@ public class TaskWindow : EditorWindow
             xMax = 100;
             xMaxLimit = 100;
 
-            yMin = 0;
-            yMinLimit = 0;
-            yMax = 100;
-            yMaxLimit = 100;
+            zMin = 0;
+            zMinLimit = 0;
+            zMax = 100;
+            zMaxLimit = 100;
 
             xRotMin = 0;
             xRotMinLimit = 0;
             xRotMax = 359;
             xRotMaxLimit = 359;
 
-            yRotMin = 0;
-            yRotMinLimit = 0;
-            yRotMax = 359;
-            yRotMaxLimit = 359;
+            zRotMin = 0;
+            zRotMinLimit = 0;
+            zRotMax = 359;
+            zRotMaxLimit = 359;
         }
 
         //Button to delete last group of spawned objects

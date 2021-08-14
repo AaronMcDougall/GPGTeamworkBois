@@ -6,14 +6,8 @@ using System;
 public class Health : MonoBehaviour
 {
     public float maxHealth;
-    public float eventDamage;
 
     public event Action DeathEvent;
-
-    public void Start()
-    {
-        FindObjectOfType<DamageEvent>().EventDamage += TakeEventDamage;
-    }
 
     //Standard Take Damage Function
     public void TakeDamage(float damage)
@@ -26,21 +20,6 @@ public class Health : MonoBehaviour
         {
             maxHealth -= damage;
             Debug.Log("You took " + damage + "damage.");
-        }
-    } 
-
-    //Takes damage when damage event is called. Could easily call from DamageDealt.cs if wanting to keep all damage consistent?
-    public void TakeEventDamage()
-    {
-        if (maxHealth <= 0)
-        {
-            CallDeathEvent();
-        }
-        else
-        {
-            eventDamage = FindObjectOfType<DamageEvent>().eventDamageDealt;
-            maxHealth -= eventDamage;
-            Debug.Log("Taking Damage From Event");
         }
     }
 
