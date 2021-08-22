@@ -1,26 +1,39 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Explosion : MonoBehaviour
 {
     public GameObject explosion;
+    public Vector3 ExplosionPoint;
+    public int ShrinkTimer = 3;
 
-    public Vector3 explosionPoint;
-
-    public Animation shrinkage;
-
-    private void OnCollisionEnter(Collision other)
+    private void OnEnable()
     {
-        Destroy(this.gameObject);
-        explosionPoint = this.transform.position;
-        OnImpact();
+        FindObjectOfType<Impact>().OnImpact += CreateExplosion;
     }
 
-    public void OnImpact()
+    private void OnDisable()
     {
-        Instantiate(explosion, explosionPoint, Quaternion.Euler(0, 0, 0));
+        FindObjectOfType<Impact>().OnImpact -= CreateExplosion;
     }
 
+    public void CreateExplosion()
+    {
+        ExplosionPoint = this.transform.position;
+        Debug.Log("Explosion now");
+        Instantiate(explosion, ExplosionPoint, Quaternion.Euler(0, 0, 0));
+        StartCoroutine (ExplosionShrinking());
+    }
+
+    IEnumerator ExplosionShrinking()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            Debug.Log(i);
+            yield return new WaitForSeconds(1f);
+        }
+    }
 }
