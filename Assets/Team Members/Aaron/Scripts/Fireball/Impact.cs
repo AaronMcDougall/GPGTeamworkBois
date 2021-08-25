@@ -14,6 +14,6 @@ public class Impact : MonoBehaviour
     {
         ImpactPoint = this.transform.position;
         OnImpact?.Invoke();
-        Debug.Log("Impact Coords are " + ImpactPoint);
+        Destroy(this.gameObject);
     }
 }
