@@ -8,6 +8,8 @@ namespace John
     {
         public event Action StartMusic;
         public event Action StartTimer;
+
+        public event Action TimerEnd;
        
         public void PlayMusic()
         {
@@ -17,6 +19,11 @@ namespace John
         public void PlayTimer()
         {
             StartTimer?.Invoke();
+        }
+
+        public void RoundOver()
+        {
+            TimerEnd?.Invoke();
         }
 
         
