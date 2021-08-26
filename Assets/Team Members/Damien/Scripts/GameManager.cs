@@ -17,23 +17,16 @@ namespace Damien
         public event Action TimerTick;
 
         public int maxTimer;
-        public Platform platform;
+        
         public int timerSeconds = 0;
-        public int randomNumber;
-        [FormerlySerializedAs("platforms")] public GameObject[] listOfPlatforms;
-        public bool platformEnabled;
-
-
-        public void PressedStart()
+      public void PressedStart()
         {
-            //randomNumber = Random.Range(0, listOfPlatforms.Length + 1);
             RoundStart();
         }
 
 
         public void RoundStart()
         {
-            Instantiate(platform);
             PlayMusic?.Invoke();
             TimerStart?.Invoke();
         }
