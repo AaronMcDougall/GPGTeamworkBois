@@ -5,7 +5,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Fireball
-{ public class SpawnPoints : MonoBehaviour
+{ public class FireballSpawnPoints : MonoBehaviour
     {
         public GameObject objectToSpawn;
         public int amountToSpawn;
