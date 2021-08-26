@@ -1,11 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Mirror;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Fireball
-{ public class FireballSpawnPoints : MonoBehaviour
+{ public class FireballSpawnPoints : NetworkBehaviour
     {
         public GameObject objectToSpawn;
         public int amountToSpawn;
@@ -18,15 +19,23 @@ namespace Fireball
         public float ySpawn;
 
 
-        IEnumerator SpawnItem()
+        public override void OnStartServer()
         {
-            for (int i = 0; i < amountToSpawn; i++)
-            {
-                Instantiate(objectToSpawn,
-                    new Vector3(Random.Range(xSpawnMin, xSpawnMax), ySpawn, Random.Range(zSpawnMin, zSpawnMax)),
-                    Quaternion.Euler(0, 0, 0));
+            SpawnFireballs();
+        }
 
-                yield return new WaitForSeconds(spawnDelay);
+        private void SpawnFireballs()
+        {
+            IEnumerator SpawnItem()
+            {
+                for (int i = 0; i < amountToSpawn; i++)
+                {
+                    Instantiate(objectToSpawn,
+                        new Vector3(Random.Range(xSpawnMin, xSpawnMax), ySpawn, Random.Range(zSpawnMin, zSpawnMax)),
+                        Quaternion.Euler(0, 0, 0));
+
+                    yield return new WaitForSeconds(spawnDelay);
+                }
             }
         }
 
