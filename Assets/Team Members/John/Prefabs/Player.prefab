@@ -233,9 +233,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  throwPoint: {fileID: 2356887233241681687}
+  throwPoint: {fileID: 8125269078273469362}
   throwPrefab: {fileID: 3826503787207263865, guid: 14de82c74fb30eb4d9095aeacf6e6d5b, type: 3}
-  speed: 1
+  speed: 50000
 --- !u!1 &8125269078273469362
 GameObject:
   m_ObjectHideFlags: 0
