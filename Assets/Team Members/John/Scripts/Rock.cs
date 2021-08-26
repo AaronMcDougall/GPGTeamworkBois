@@ -17,12 +17,12 @@ namespace John
         private void Awake()
         {
             rb = GetComponent<Rigidbody>();
-            bulletTimer = 15;
+            bulletTimer = 100;
         }
 
         private void FixedUpdate()
         {
-            rb.velocity = new Vector3(0, 0, speed);
+            //rb.velocity = new Vector3(0, 0, speed);
             bulletTimer--;
             if (bulletTimer <= 0)
             {
