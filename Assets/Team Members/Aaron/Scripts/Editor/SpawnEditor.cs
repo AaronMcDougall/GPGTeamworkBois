@@ -4,7 +4,7 @@ using Fireball;
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(SpawnPoints))]
+[CustomEditor(typeof(FireballSpawnPoints))]
 public class SpawnEditor : Editor
 {
     public override void OnInspectorGUI()
@@ -13,7 +13,7 @@ public class SpawnEditor : Editor
 
         if (GUILayout.Button("Spawn Items"))
         {
-            ((SpawnPoints)target).StartCoroutine("SpawnItem");
+            ((FireballSpawnPoints)target).StartCoroutine("SpawnItem");
         }
     }
 }
