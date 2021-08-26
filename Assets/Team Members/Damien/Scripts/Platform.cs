@@ -39,7 +39,6 @@ namespace Damien
         void MovePlatform()
         {
             Debug.Log("Platform Moving");
-            
         }
     }
 }

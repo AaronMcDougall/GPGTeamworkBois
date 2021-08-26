@@ -15,6 +15,8 @@ namespace Damien
         public event Action TimerStart;
         public event Action TimerStop;
         public event Action TimerTick;
+
+        public int maxTimer;
         public Platform platform;
         public int timerSeconds = 0;
         public int randomNumber;
@@ -24,26 +26,16 @@ namespace Damien
 
         public void PressedStart()
         {
-            randomNumber = Random.Range(0, listOfPlatforms.Length + 1);
-            PlayMusic?.Invoke();
-            TimerStart?.Invoke();
+            //randomNumber = Random.Range(0, listOfPlatforms.Length + 1);
             RoundStart();
         }
 
 
         public void RoundStart()
         {
-            foreach (GameObject platform in listOfPlatforms)
-            {
-                //see if there is a platform already on the map
-                if (!platformEnabled)
-                {
-                    {
-                        Instantiate(listOfPlatforms[randomNumber]);
-                        platformEnabled = true;
-                    }
-                }
-            }
+            Instantiate(platform);
+            PlayMusic?.Invoke();
+            TimerStart?.Invoke();
         }
 
         public void PressedStop()
@@ -56,12 +48,29 @@ namespace Damien
             PressedStart(); //TODO: change to menu later
             TimerStart += RPCStartTimer;
             TimerStop += RPCStopTimer;
+            TimerTick += RpcTimerCheck;
         }
 
         [ClientRpc]
         public void RPCStartTimer()
         {
             StartCoroutine(Timer());
+        }
+
+        [ClientRpc]
+
+        public void RpcTimerCheck()
+        {
+            if (timerSeconds >= maxTimer)
+            {
+                EndRound();
+            }
+        }
+
+        void EndRound()
+        {
+            RPCStopTimer();
+            
         }
 
         [ClientRpc]

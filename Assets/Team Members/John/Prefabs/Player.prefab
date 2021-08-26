@@ -41,13 +41,13 @@ GameObject:
   - component: {fileID: 3661511471974463810}
   - component: {fileID: 3661511471974463821}
   - component: {fileID: 3661511471974463820}
-  - component: {fileID: 3661511471974463823}
   - component: {fileID: 3661511471974463822}
   - component: {fileID: 3661511471974463811}
   - component: {fileID: 1286764961}
   - component: {fileID: 4966780384374306873}
   - component: {fileID: 920246868012894261}
   - component: {fileID: 8796789185726662450}
+  - component: {fileID: 7656421940109207078}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -120,20 +120,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &3661511471974463823
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3661511471974463817}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3661511471974463822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,6 +222,20 @@ MonoBehaviour:
   throwPoint: {fileID: 8125269078273469362}
   throwPrefab: {fileID: 3826503787207263865, guid: 14de82c74fb30eb4d9095aeacf6e6d5b, type: 3}
   speed: 50000
+--- !u!136 &7656421940109207078
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3661511471974463817}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8125269078273469362
 GameObject:
   m_ObjectHideFlags: 0
